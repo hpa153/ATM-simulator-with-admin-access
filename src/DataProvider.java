@@ -20,8 +20,8 @@ public class DataProvider {
     private static final String DATABASE_LINK = "jdbc:mysql://localhost:3306/JavaClass";
     
     /**
-     * Hàm tạo kết nối với database
-     * @return 
+     * Method to connect with database
+     * @return connection
      */
     public static Connection ketNoi(){
         Connection conn = null;
@@ -31,24 +31,24 @@ public class DataProvider {
             
             conn = DriverManager.getConnection(DATABASE_LINK, "root", "Gerrardliver_08");
         } catch (ClassNotFoundException ex) {
-            System.err.println("Lỗi không tìm thấy driver. Chi tiết: " + ex.getMessage());
+            System.err.println("Could not find driver. Details: " + ex.getMessage());
         } catch (SQLException ex) {
-            System.err.println("Không kết nối được với database trên mySQL. Chi tiết: " + ex.getMessage());
+            System.err.println("Could not connect to database on mySQL. Details: " + ex.getMessage());
         } catch (InstantiationException ex) {
-            System.err.println("Lỗi load driver. Chi tiết: " + ex.getMessage());
+            System.err.println("Driver load error. Details: " + ex.getMessage());
         } catch (IllegalAccessException ex) {
-            System.err.println("Lỗi load driver. Chi tiết: " + ex.getMessage());
+            System.err.println("Driver load error. Details: " + ex.getMessage());
         }
         return conn;
     }
     
-    //Khởi tạo đối tượng thuộc lớp NguoiDungBusiness
+    //Initialize object of class NguoiDungBusiness
     private static NguoiDungBusiness _nguoiDungBus = null;
     
     /**
-     * Hàm về một đối tượng thuộc lớp NguoiDungBusiness
-     * để có thể gọi, sử dụng nhiều nơi
-     * @return 
+     * Method of object of class NguoiDungBusiness
+     * to call and use at multiple places
+     * @return object of class NguoiDungBusiness
      */
     public static NguoiDungBusiness getNguoiDungBus()
     {
@@ -59,13 +59,13 @@ public class DataProvider {
         return _nguoiDungBus;
     }
     
-    //Khởi tạo đối tượng thuộc lớp QuanLyBusiness
+    //Initialize object of class QuanLyBusiness
     private static QuanLyBusiness _quanLyBus = null;
     
     /**
-     * Hàm về một đối tượng thuộc lớp QuanLyBusiness
-     * để có thể gọi, sử dụng nhiều nơi
-     * @return 
+     * Method of object of class QuanLyBusiness
+     * to call and use at multiple places
+     * @return object of class QuanLyBusiness
      */
     public static QuanLyBusiness getQuanLyBus()
     {
@@ -80,9 +80,9 @@ public class DataProvider {
     private static GiaoDich _giaoDichBus = null;
     
     /**
-     * Hàm về một đối tượng thuộc lớp GiaoDich
-     * để có thể gọi, sử dụng nhiều nơi
-     * @return 
+     * Method of object of class GiaoDich
+     * to call and use at multiple places
+     * @return object of class GiaoDich
      */
     public static GiaoDich getGiaoDichBus()
     {
@@ -93,13 +93,13 @@ public class DataProvider {
         return _giaoDichBus;
     }
     
-    //Khởi tạo đối tượng thuộc lớp TaiKhoanBusiness
+    //Initialize object of class TaiKhoanBusiness
     private static TaiKhoanBusiness _TaiKhoanBus = null;
     
     /**
-     * Hàm về một đối tượng thuộc lớp TaiKhoanBusiness
-     * để có thể gọi, sử dụng nhiều nơi
-     * @return 
+     * Method of object of class TaiKhoanBusiness
+     * to call and use at multiple places
+     * @return object of class TaiKhoanBusiness
      */
     public static TaiKhoanBusiness getTaiKhoanBus()
     {

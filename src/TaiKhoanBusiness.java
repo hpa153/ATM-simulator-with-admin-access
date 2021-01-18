@@ -18,44 +18,46 @@ import java.util.logging.Logger;
  *
  * @author Phuong Anh Hoang
  */
+
+
 public class TaiKhoanBusiness {
+    /**
+     * Method to get list of all accounts
+     * @return 
+     */
     public List<TaiKhoan> layDanhSach(){
-        //Khai báo danh sách tài khoản
+        //Create a list for accounts
         List<TaiKhoan> lstTaiKhoan = new ArrayList();
 
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
             
         try {
-            
-            String strTaiKhoan = "Select MaTaiKhoan, TaiKhoan from TaiKhoan";
-            
-            //Kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
-            //Tạo công việc
+            //Create statement
+            String strTaiKhoan = "Select MaTaiKhoan, TaiKhoan from TaiKhoan";
             Statement comm = conn.createStatement();
             
-            //Thực hiện công việc
+            //Execute statment
             ResultSet rs = comm.executeQuery(strTaiKhoan);
             
-            //Khai báo đối tượng
+            //Create an object, assign values from the statement to object and add object to the list
             TaiKhoan objTaiKhoan;
             
-            //Khởi tạo đối tượng, gán thuộc tính cho đối tượng và chuyển về danh sách
             while(rs.next()){
                 objTaiKhoan = new TaiKhoan();
                 objTaiKhoan.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
                 
                 objTaiKhoan.setTaiKhoan(rs.getString("TaiKhoan"));
                 
-                //Thêm vào danh sách
                 lstTaiKhoan.add(objTaiKhoan);
             }
         } catch (SQLException ex) {
             Logger.getLogger(NguoiDungBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally//dù thành công hay thất bại luôn thực hiện code block, ở đây là đóng kết nối
+        finally//Close connection
         {
             try {
                 conn.close();
@@ -66,27 +68,29 @@ public class TaiKhoanBusiness {
         return lstTaiKhoan;
     }
     
+    /**
+     * Method to get account information based on transmitted keyword
+     * @param maTaiKhoan
+     * @return object of TaiKhoan class with account information matching keyword
+     */
     public TaiKhoan layChiTietTaiKhoan(String maTaiKhoan){
-        //Khai báo đối tượng tài khoản
         TaiKhoan objTaiKhoan = null;
 
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
             
         try {
-            
-            String strTaiKhoan = "Select MaTaiKhoan, TaiKhoan from TaiKhoan where MaTaiKhoan = '" + maTaiKhoan + "'";
-            
-            //Kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
-            //Tạo công việc
+            //Create statement
+            String strTaiKhoan = "Select MaTaiKhoan, TaiKhoan from TaiKhoan where MaTaiKhoan = '" + maTaiKhoan + "'";
             Statement comm = conn.createStatement();
             
-            //Thực hiện công việc
+            //Execute statement
             ResultSet rs = comm.executeQuery(strTaiKhoan);
             
-            //Khởi tạo đối tượng, gán thuộc tính cho đối tượng và chuyển về danh sách
+            //Initialize object and assign values
             while(rs.next()){
                 objTaiKhoan = new TaiKhoan();
                 objTaiKhoan.setMaTaiKhoan(rs.getString("MaTaiKhoan"));
@@ -96,7 +100,7 @@ public class TaiKhoanBusiness {
         } catch (SQLException ex) {
             Logger.getLogger(NguoiDungBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
-        finally//dù thành công hay thất bại luôn thực hiện code block, ở đây là đóng kết nối
+        finally//Close connection
         {
             try {
                 conn.close();

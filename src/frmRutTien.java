@@ -272,15 +272,15 @@ public class frmRutTien extends javax.swing.JFrame {
         boolean ketQua = false;
         
         if (soTien > soDu){
-            JOptionPane.showMessageDialog(rootPane, "Số tiền cần rút lớn hơn số dư trong tài khoản!\n Không thể thực hiện giao dịch!");
+            JOptionPane.showMessageDialog(rootPane, "The withdrawal amount is bigger than your balance!\n Transaction not possible!");
             return;
         }
         if (soTien > 350){
-            JOptionPane.showMessageDialog(rootPane, "Số tiền cần rút vượt mức tối đa cho phép!\n Không thể thực hiện giao dịch!");
+            JOptionPane.showMessageDialog(rootPane, "The withdrawal amount exceeded the maximum permitted amount!\n Transaction not possible!");
             return;
         }
         if (soTien < 10){
-            JOptionPane.showMessageDialog(rootPane, "Số tiền cần rút ít hơn mức tối thiểu cho phép!\n Không thể thực hiện giao dịch!");
+            JOptionPane.showMessageDialog(rootPane, "The withdrawal amount less than the minimum amount!\n Transaction not possible!");
             return;
         }
         
@@ -302,7 +302,7 @@ public class frmRutTien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Rút tiền");
+        this.setTitle("Withdrawal");
         NguoiDung objNguoiDung = DataProvider.getNguoiDungBus().layChiTietNguoiDung(stk);
         Double soDu = objNguoiDung.getSoDu();
 

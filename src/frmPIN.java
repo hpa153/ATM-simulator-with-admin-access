@@ -192,7 +192,7 @@ public class frmPIN extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Đổi mã PIN");
+        this.setTitle("PIN change");
     }//GEN-LAST:event_formWindowOpened
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed

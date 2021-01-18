@@ -25,15 +25,15 @@ import java.util.logging.Logger;
  */
 public class GiaoDich {
     /**
-     * Hàm lấy danh sách các giao dịch kiêm tìm kiếm giao dịch theo số tài khoản
+     * Method to get list of transactions and search for transactions based on account number
      * @param stk 
-     * @return toàn bộ danh sách các giao dịch hoặc các giao dịch của số tài khoản được truyền vào
+     * @return list of transactions or transactions based on the transmitted account number
      */
     public static List<SaoKe> docGiaoDich(String stk) {
-        //Khỏi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
         
-        //Khai báo danh sách
+        //Create transaction list
         List<SaoKe> lstGiaoDich = new ArrayList();
         
         try {
@@ -41,24 +41,24 @@ public class GiaoDich {
             String strGiaoDich = "Select MaGiaoDich, ThoiGianGiaoDich, GiaoDich, "
                     + "SoTien, SoDu, NguoiThuHuong, SoTaiKhoanThuHuong, NoiDung from LichSuGiaoDich where 1=1 ";
             
-            //Nếu từ khóa được nhập thì lấy danh sách theo từ khóa
+            //if the keyword is transmitted -> get list based on keyword
             if(!stk.isEmpty()){
                 strGiaoDich += "AND SoTaiKhoan = '" + stk + "'";
             }
             
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
-            //Tạo công việc
+            //Create statement
             Statement comm = conn.createStatement();
             
-            //Thực hiện công việc
+            //Execute statement
             ResultSet rs = comm.executeQuery(strGiaoDich);
             
-            //Khai báo đối tượng
+            //Create object of class SaoKe
             SaoKe objSaoKe;
             
-            //Khi danh sách chưa hết, gán thông tin vào đối tượng và thêm đối tượng vào list
+            //While the list has not ended, assign the information to the object and add the object to the list
             while(rs.next()){
                 objSaoKe = new SaoKe();
                 objSaoKe.setMaGiaoDich(rs.getInt("MaGiaoDich"));
@@ -76,7 +76,7 @@ public class GiaoDich {
             Logger.getLogger(SaoKe.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -89,27 +89,27 @@ public class GiaoDich {
     } 
     
     /**
-     * Hàm thực hiện giao dịch chuyển tiền, cập nhật số dư của người dùng
+     * Method for money transfer, account balance update
      * @param objSaoKe
      * @param stk
-     * @return true nếu thêm giao dịch thành công, false nếu thất bại
+     * @return true if the transfer was successful, false if failed
      */
     public boolean chuyenTien(SaoKe objSaoKe, String stk){
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
         
-        //Lấy thông tin người dùng cần cập nhật theo số tài khoản
+        //Create object and assign user info according to account number
         NguoiDung objNguoiDung = DataProvider.getNguoiDungBus().layChiTietNguoiDung(stk);
         
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
+            //Create statement for money transfer
             String strThem = "Insert into LichSuGiaoDich(MaGiaoDich, SoTaiKhoan, "
             + "ThoiGianGiaoDich, GiaoDich, SoTien, SoDu, NguoiThuHuong, SoTaiKhoanThuHuong, NoiDung) "
             + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            //Tạo công việc
             PreparedStatement comm1 = conn.prepareStatement(strThem);
 
             comm1.setInt(1, layMaGiaoDich());
@@ -122,17 +122,17 @@ public class GiaoDich {
             comm1.setString(8, objSaoKe.getSoTaiKhoanThuHuong());
             comm1.setString(9, objSaoKe.getNoiDung());
 
+            //Create statement to update account balance
             String strCapNhatSoDu = "Update NguoiDung set SoDu = ? where SoTaiKhoan = '" + stk + "'";
 
-            //Tạo công việc cập nhật số dư người dùng
             PreparedStatement comm2 = conn.prepareStatement(strCapNhatSoDu);
 
             comm2.setDouble(1, objNguoiDung.getSoDu() - objSaoKe.getSoTien()); 
             
-            //Thực hiện cập nhật số dư người dùng
+            //Execute account balance update statement
             comm2.executeUpdate();
             
-            //Thực hiện công việc thêm giao dịch vào bảng LichSuGiaoDich
+            //Execute transaction statement and add it to LichSuGiaoDich table
             return comm1.executeUpdate() > 0;
             
             
@@ -140,7 +140,7 @@ public class GiaoDich {
             Logger.getLogger(NguoiDungBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -153,27 +153,27 @@ public class GiaoDich {
     }
     
     /**
-     * Hàm thực hiện giao dịch rút tiền, cập nhật số dư người dùng
+     * Method for money withdraw and account balance update
      * @param objSaoKe
      * @param stk
-     * @return true nếu thêm giao dịch thành công, false nếu thất bại
+     * @return true if the transfer was successful, false if failed
      */
     public boolean rutTien(SaoKe objSaoKe, String stk){
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
         
-        //Lấy thông tin người dùng theo số tài khoản truyền vào
+        //Create object and assign user info according to transmitted account number
         NguoiDung objNguoiDung = DataProvider.getNguoiDungBus().layChiTietNguoiDung(stk);
         
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
 
+            //Create statement for money withrawal and add it to LichSuGiaoDich table
             String strRutTien = "Insert into LichSuGiaoDich(MaGiaoDich, SoTaiKhoan, "
             + "ThoiGianGiaoDich, GiaoDich, SoTien, SoDu, NguoiThuHuong, SoTaiKhoanThuHuong, NoiDung) "
             + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            //Tạo công việc thêm giao dịch rút tiền vào bảng LichSuGiaoDich
             PreparedStatement comm1 = conn.prepareStatement(strRutTien);
 
             comm1.setInt(1, layMaGiaoDich());
@@ -186,24 +186,24 @@ public class GiaoDich {
             comm1.setString(8, null);
             comm1.setString(9, objSaoKe.getNoiDung());
 
+            //Create statement to update account balance
             String strSoDu = "Update NguoiDung set SoDu = ? where SoTaiKhoan = '" + stk + "'";
 
-            //Tạo công việc cập nhật số dư người dùng
             PreparedStatement comm2 = conn.prepareStatement(strSoDu);
 
             comm2.setDouble(1, objNguoiDung.getSoDu() - objSaoKe.getSoTien());
 
-            //Thực hiện công việc cập nhật số dư người dùng
+            //Execute account balance update statement
             comm2.executeUpdate();
             
-            //Thực hiện công việc thêm giao dịch rút tiền
+            //Execute transaction statement and add it to LichSuGiaoDich table
             return comm1.executeUpdate() > 0;
             
         } catch (SQLException ex) {
             Logger.getLogger(NguoiDungBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -216,27 +216,27 @@ public class GiaoDich {
     }
     
     /**
-     * Hàm thực hiện giao dịch nạp tiền và cập nhật số dư người dùng
+     * Method to add money and account balance update
      * @param objSaoKe
      * @param stk
-     * @return true nếu thêm giao dịch thành công, false nếu thất bại
+     * @return true if the addition was successful, false if failed
      */
     public boolean napTien(SaoKe objSaoKe, String stk){
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
         
-        //Khởi tạo đối tượng theo thông tin số tài khoản truyền vào
+        //Create object and assign user info according to transmitted account number
         NguoiDung objNguoiDung = DataProvider.getNguoiDungBus().layChiTietNguoiDung(stk);
         
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
+            //Create statement to add money and add transaction to LichSuGiaoDich table
             String strRutTien = "Insert into LichSuGiaoDich(MaGiaoDich, SoTaiKhoan, "
             + "ThoiGianGiaoDich, GiaoDich, SoTien, SoDu, NguoiThuHuong, SoTaiKhoanThuHuong, NoiDung) "
             + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
-            //Tạo công việc thêm giao dịch rút tiền vào bảng LichSuGiaoDich
             PreparedStatement comm1 = conn.prepareStatement(strRutTien);
             
             comm1.setInt(1, layMaGiaoDich());
@@ -249,24 +249,24 @@ public class GiaoDich {
             comm1.setString(8, null);
             comm1.setString(9, objSaoKe.getNoiDung());
             
+            //Create statement to update account balance
             String strSoDu = "Update NguoiDung set SoDu = ? where SoTaiKhoan = '" + stk + "'";
             
-            //Tạo công việc cập nhật số dư người dùng
             PreparedStatement comm2 = conn.prepareStatement(strSoDu);
             
             comm2.setDouble(1, (objNguoiDung.getSoDu() + objSaoKe.getSoTien()));
             
-            //Thực hiện cập nhật số dư người dùng
+            //Execute account balance update statement
             comm2.executeUpdate();
             
-            //Thực hiện công việc nạp tiền
+            //Execute money add statement
             return comm1.executeUpdate() > 0;
             
         } catch (SQLException ex) {
             Logger.getLogger(NguoiDungBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -279,7 +279,7 @@ public class GiaoDich {
     }
     
     /**
-     * Hàm in biên lai theo đường dẫn chọn trong fileChooser
+     * Method to print receipt according to the path in the fileChooser
      * @param duongDan
      * @param noiDung 
      */
@@ -292,19 +292,19 @@ public class GiaoDich {
             writer.close();
                 
         } catch (IOException ex) {
-            System.err.println("Lỗi trong quá trình viết file" + ex.getMessage());
+            System.err.println("Error while writing file: " + ex.getMessage());
         }
     }
     
     /**
-     * Hàm in sao kê giao dịch vào file csv theo đường dẫn chọn trong FileChooser
+     * Method to print transaction into a .csv file according to the path in the FileChooser
      * @param duongDan
      * @param lstGiaoDich
      * @param stk
-     * @return 
+     * @return true if printed, false if failed
      */
     public static boolean inSaoKe(String duongDan, List<SaoKe> lstGiaoDich, String stk){
-        //Lấy danh sách các giao dịch, tất cả hoặc theo số tài khoản được truyền vào
+        //Get transaction list, all or of transmitted account number
         lstGiaoDich = docGiaoDich(stk);
         
         String[] tieuDe = new String[]{"Mã giao dịch", "Thời gian giao dịch", "Giao dịch",
@@ -313,14 +313,14 @@ public class GiaoDich {
         try {   
             FileWriter writer = new FileWriter(duongDan + ".csv");
 
-            //In dòng tiêu đề
+            //Print header line
             for(int i = 0; i < tieuDe.length; i++)
             {
                writer.write(tieuDe[i] + ",");
             }
             writer.write("\n");
 
-            //In thông tin giao dịch
+            //Print transaction info
             for(SaoKe sk : lstGiaoDich){
                 writer.write(sk.getMaGiaoDich() + ",");
                 writer.write(sk.getThoiGianGiaoDich() + ",");
@@ -343,38 +343,38 @@ public class GiaoDich {
     }
     
     /**
-     * Hàm lấy thời gian hiện tại để gán chho thời gian giao dịch
-     * @return 
+     * Method to get transaction time
+     * @return transaction time
      */
     private static LocalDateTime thoiGianGiaoDich(){
         return LocalDateTime.now();
     }
     
     /**
-     * Hàm lấy mã giao dịch
-     * @return 
+     * Method to get transaction id
+     * @return transaction id
      */
     private static int layMaGiaoDich(){
-        //Khởi tạo kết nối
+        //Initiale database connection
         Connection conn = null;
         
-        //Khai báo danh sách để thêm các giao dịch
+        //Create lis of transactions
         List<SaoKe> lstGiaoDich = new ArrayList();
         
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
+            //Create statement
             String strGiaoDich = "Select MaGiaoDich, ThoiGianGiaoDich, GiaoDich, "
                     + "SoTien, SoDu, NguoiThuHuong, SoTaiKhoanThuHuong, NoiDung from LichSuGiaoDich";
             
-            //Tạo công việc
             Statement comm = conn.createStatement();
             
-            //Thực hiện công việc
+            //Execute statement
             ResultSet rs = comm.executeQuery(strGiaoDich);
             
-            //Khai báo đối tượng để lấy thông tin
+            //Create object of class SaoKe to add info
             SaoKe objSaoKe;
             
             while(rs.next()){
@@ -394,7 +394,7 @@ public class GiaoDich {
             Logger.getLogger(SaoKe.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -404,15 +404,15 @@ public class GiaoDich {
             }
         }
         
-        //Khai báo array để lấy giá trị int của mã giao dịch
+        //Create array to get values from the transaction list
         int[] arrGiaoDich = new int[lstGiaoDich.size()];
         
-        //Thêm các mã giao dịch vào array
+        //Add all transaction ids to the array
         for(int i = 0; i <= lstGiaoDich.size()-1; i++){
             arrGiaoDich[i] = lstGiaoDich.get(i).getMaGiaoDich();
         }
         
-        //Lấy mã giao dịch gần nhất và cộng thêm 1 để lấy mã giao dịch mới
+        //Get most recent transaction id and add 1 to get the new transaction id
         int maGiaoDich = arrGiaoDich[arrGiaoDich.length - 1] + 1;
         
         return maGiaoDich;

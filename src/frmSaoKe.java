@@ -95,7 +95,7 @@ public class frmSaoKe extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel1.setText("Bạn có muốn lấy sao kê?");
+        jLabel1.setText("Do you want to print the invoice?");
 
         txtSaoKe.setBackground(new java.awt.Color(255, 250, 250));
         txtSaoKe.setColumns(20);

@@ -24,29 +24,28 @@ public class QuanLyBusiness {
     private List<QuanLy> lstQuanLy = new ArrayList();
     
     /**
-     * Hàm lấy danh sách quản lý
+     * Method to get administrator list
      * @return 
      */
     public List<QuanLy> layDanhSachQuanLy(){
-        //Khai báo danh sách quản lý
+        //Create new administrator list
         List<QuanLy> lstQuanLy = new ArrayList();
         
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
         
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
+            //Create statement
             String strQuanLy = "Select Username, HoTen, MatKhau from QuanLy";
-            
-            //Tạo công việc
             Statement comm = conn.createStatement();
             
-            //Thực hiện công việc
+            //Execute statement
             ResultSet rs = comm.executeQuery(strQuanLy);
         
-            //Khai báo đối tượng quản lý
+            //Create object, assign values while the table has not ended and add them to the list
             QuanLy objQuanLy;
             
             while(rs.next()){
@@ -62,7 +61,7 @@ public class QuanLyBusiness {
             Logger.getLogger(QuanLyBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -75,30 +74,29 @@ public class QuanLyBusiness {
     }
     
     /**
-     * Hàm lấy chi tiết quản lý theo username
+     * Method to get administrator info based on username
      * @param username
      * @return 
      */
     public QuanLy layChiTietQuanLy(String username){
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
 
-        //Khởi tạo đối tượng
+        //Initiale object of class QuanLy
         QuanLy objQuanLy = new QuanLy();
             
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
+            //Create statement
             String strLayChiTiet = "Select Username, HoTen, MatKhau from QuanLy where Username = '" + username + "'";
             
-            //Tạo công việc
             Statement comm = conn.createStatement();
             
-            //Thực hiện công việc và trả về kết quả
+            //Execute statement and assign values to object
             ResultSet rs = comm.executeQuery(strLayChiTiet);
             
-            //Gán thông tin cho đối tượng 
             while(rs.next()){
                 objQuanLy = new QuanLy();
                 objQuanLy.setUsername(rs.getString("Username"));
@@ -110,7 +108,7 @@ public class QuanLyBusiness {
             Logger.getLogger(QuanLyBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {
@@ -123,34 +121,34 @@ public class QuanLyBusiness {
     }
     
     /**
-     * Hàm đổi mật khẩu người người trùng với số tài khoản truyền vào
-     * @param stk số tài khoản của người dùng muốn đổi mật khẩu
-     * @param matKhau mật khẩu mới cần cập nhật
-     * @return true nếu thành công, false nếu thất bại
+     * Method to change password of the user matching the entered username
+     * @param username
+     * @param matKhau new password
+     * @return true if changed successfully, false if failed
      */
     public boolean doiMatKhau(String username, String matKhau){
-        //Khởi tạo kết nối
+        //Initialize database connection
         Connection conn = null;
             
         try {
-            //Thực hiện kết nối
+            //Connect to database
             conn = DataProvider.ketNoi();
             
+            //Create statement
             String doiMatKhau = "Update QuanLy set MatKhau = ? where Username = '" + username + "'";
             
-            //Tạo công việc
             PreparedStatement comm = conn.prepareStatement(doiMatKhau);
             
             comm.setString(1, matKhau);
             
-            //Thực hiện công việc
+            //Execute statement
             return comm.executeUpdate() > 0;
             
         } catch (SQLException ex) {
             Logger.getLogger(QuanLyBusiness.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        //Đóng kết nối
+        //Close connection
         finally
         {
             try {

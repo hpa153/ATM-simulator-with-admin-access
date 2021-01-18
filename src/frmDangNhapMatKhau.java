@@ -353,7 +353,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "2";
             txtMatKhau.setText(pass);
@@ -363,7 +363,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "3";
             txtMatKhau.setText(pass);
@@ -373,11 +373,13 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         String matKhau = new String(txtMatKhau.getPassword());
-        String thongBao = "Mật khẩu chưa đúng! Vui lòng nhập lại mật khẩu";
+        String thongBao = "Incorrect password! Please try it again";
         frmGiaoDich frmNguoiDung = new frmGiaoDich();
         frmQuanLy frmAdmin = new frmQuanLy();
         boolean ketQua = false;
 
+        //If password is 10 character long and matches password of the transmitted account number
+        //Opens transaction window
         if(taiKhoan.length() == 10){
             NguoiDung objNguoiDung = DataProvider.getNguoiDungBus().layChiTietNguoiDung(taiKhoan);
             if(matKhau.equals(objNguoiDung.getMatKhau())){
@@ -385,7 +387,8 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
                 frmNguoiDung.setVisible(true);
                 ketQua = true;
             }
-        }else{
+        }else{//If password has a different length than 10 and matches password of an admistrator
+            //Opens administration window
             QuanLy objQuanLy = DataProvider.getQuanLyBus().layChiTietQuanLy(taiKhoan);
             if(matKhau.equals(objQuanLy.getMatKhau())){
                 frmAdmin.setTaiKhoan(taiKhoan);
@@ -394,16 +397,17 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
             }
         }
         
+        //If ketQua is true, close this window
         if(ketQua){
             this.setVisible(false);
-        }else{
+        }else{//Otherwise the notification will show up
             lblThongBao.setText(thongBao);
         }
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "5";
             txtMatKhau.setText(pass);
@@ -413,7 +417,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "6";
             txtMatKhau.setText(pass);
@@ -429,7 +433,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn thoát?", "Chú ý!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Are you sure to exit?", "Attention!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if(ketQua == JOptionPane.YES_OPTION)
         {
             System.exit(0);
@@ -438,7 +442,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "9";
             txtMatKhau.setText(pass);
@@ -448,7 +452,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "8";
             txtMatKhau.setText(pass);
@@ -458,7 +462,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "4";
             txtMatKhau.setText(pass);
@@ -468,7 +472,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "7";
             txtMatKhau.setText(pass);
@@ -478,7 +482,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "0";
             txtMatKhau.setText(pass);
@@ -488,7 +492,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         if(txtMatKhau.getText().length() >= 7){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String pass = txtMatKhau.getText() + "1";
             txtMatKhau.setText(pass);
@@ -497,7 +501,7 @@ public class frmDangNhapMatKhau extends javax.swing.JFrame {
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Cửa sổ đăng nhập - Mật khẩu");
+        this.setTitle("Login window - Password");
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed

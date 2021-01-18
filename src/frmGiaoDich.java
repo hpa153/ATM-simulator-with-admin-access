@@ -284,7 +284,7 @@ public class frmGiaoDich extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn thoát?", "Chú ý!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Are you sure to exit?", "Attention!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         if(ketQua == JOptionPane.YES_OPTION)
         {
             System.exit(0);
@@ -301,7 +301,7 @@ public class frmGiaoDich extends javax.swing.JFrame {
         List<SaoKe> lstGiaoDich = DataProvider.getGiaoDichBus().docGiaoDich(stk);
         
         if(lstGiaoDich.isEmpty()){
-            JOptionPane.showMessageDialog(rootPane, "Bạn chưa thực hiện giao dịch nào!");
+            JOptionPane.showMessageDialog(rootPane, "You have no transactions yet!");
         }else{
             frmLichSuGiaoDich frmHistory = new frmLichSuGiaoDich();
             frmHistory.setStk(stk);

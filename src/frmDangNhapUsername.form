@@ -80,32 +80,37 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lblThongBao" max="32767" attributes="0"/>
+              </Group>
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
-                          <Component id="txtDangNhap" min="-2" pref="149" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                           <Component id="rbtnNguoiDung" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="rbtnQuanLy" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
+                          <Component id="txtDangNhap" min="-2" pref="149" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblThongBao" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="292" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,7 +144,8 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ch&#xe0;o m&#x1eeb;ng &#x111;&#x1ebf;n v&#x1edb;i d&#x1ecb;ch v&#x1ee5; c&#x1ee7;a PA Bank"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Welcome to PA Bank"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
         </Component>
@@ -148,7 +154,8 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Vui l&#xf2;ng l&#x1ef1;a ch&#x1ecd;n quy&#x1ec1;n ng&#x1b0;&#x1edd;i d&#xf9;ng v&#xe0; nh&#x1ead;p t&#xe0;i kho&#x1ea3;n"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Please select your account type"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnNguoiDung">
@@ -159,7 +166,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Kh&#xe1;ch h&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Customer"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnQuanLy">
@@ -170,7 +177,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd;"/>
+            <Property name="text" type="java.lang.String" value="Admistrator"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDangNhap">
