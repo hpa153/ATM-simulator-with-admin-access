@@ -263,7 +263,7 @@ public class frmNapTien extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Nạp tiền");
+        this.setTitle("Add money");
         NguoiDung objNguoiDung = DataProvider.getNguoiDungBus().layChiTietNguoiDung(stk);
         Double soDu = objNguoiDung.getSoDu();
 

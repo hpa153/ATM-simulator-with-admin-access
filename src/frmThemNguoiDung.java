@@ -323,9 +323,9 @@ public class frmThemNguoiDung extends javax.swing.JFrame {
         hienThiTaiKhoan();
         
         if(stk.isEmpty()){
-            this.setTitle("Thêm người dùng");
+            this.setTitle("Add user");
         }else{
-            this.setTitle("Cập nhật thông tin người dùng");
+            this.setTitle("Update user");
             hienThiThongTinND();
         }
     }//GEN-LAST:event_formWindowOpened
@@ -360,19 +360,19 @@ public class frmThemNguoiDung extends javax.swing.JFrame {
         
         switch(trangThai){
             case THONG_TIN:{
-                JOptionPane.showMessageDialog(rootPane, "Vui lòng điền đầy đủ thông tin trong mãu!");
+                JOptionPane.showMessageDialog(rootPane, "Please fill in all information of the form!");
                 break;
             }
             case NUT:{
-                JOptionPane.showMessageDialog(rootPane, "Vui lòng lựa chọn giới tính!");
+                JOptionPane.showMessageDialog(rootPane, "Please select your gender!");
                 break;
             }
             case TAI_KHOAN:{
-                JOptionPane.showMessageDialog(rootPane, "Số tài khoản gồm 10 ký tự! Vui lòng nhập số tài khoản hợp lệ!");
+                JOptionPane.showMessageDialog(rootPane, "Account number includes 10 characters! Please enter valid account number!");
                 break;
             }
             case MAT_KHAU:{
-                JOptionPane.showMessageDialog(rootPane, "Mật khẩu gồm 4 ký tự! Vui lòng nhập mật khẩu hợp lệ!");
+                JOptionPane.showMessageDialog(rootPane, "Password includes 4 characters! Please enter valid password!");
                 break;
             }
             case TIEP_TUC:{
@@ -415,13 +415,13 @@ public class frmThemNguoiDung extends javax.swing.JFrame {
                 if(thucHien){
                     ketQua = DataProvider.getNguoiDungBus().themNguoiDung(objND);
                 }else{
-                    JOptionPane.showMessageDialog(rootPane, "Số tài khoản đã tồn tại! Vui lòng nhập số tài khoản hợp lệ!");
+                    JOptionPane.showMessageDialog(rootPane, "Account number already exists! Please enter valid account number!");
                 }
             }
         }
         
         if(ketQua){
-                JOptionPane.showMessageDialog(rootPane, "Cập nhật thông tin người dùng thành công");
+                JOptionPane.showMessageDialog(rootPane, "Successfully updated user information");
 
                 frmQuanLy.hienThiDanhSachNguoiDung();
 

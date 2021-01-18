@@ -70,19 +70,21 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel1.setText("Chào mừng đến với dịch vụ của PA Bank");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome to PA Bank");
         jLabel1.setAlignmentY(0.0F);
 
         jLabel2.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel2.setText("Vui lòng lựa chọn quyền người dùng và nhập tài khoản");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Please select your account type");
 
         btnGroupUser.add(rbtnNguoiDung);
         rbtnNguoiDung.setForeground(new java.awt.Color(51, 0, 102));
-        rbtnNguoiDung.setText("Khách hàng");
+        rbtnNguoiDung.setText("Customer");
 
         btnGroupUser.add(rbtnQuanLy);
         rbtnQuanLy.setForeground(new java.awt.Color(51, 0, 102));
-        rbtnQuanLy.setText("Quản lý");
+        rbtnQuanLy.setText("Admistrator");
 
         txtDangNhap.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtDangNhap.setForeground(new java.awt.Color(51, 0, 102));
@@ -103,26 +105,29 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(txtDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(rbtnNguoiDung)
                         .addGap(34, 34, 34)
-                        .addComponent(rbtnQuanLy)))
+                        .addComponent(rbtnQuanLy))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(txtDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,7 +390,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "1";
             txtDangNhap.setText(soTaiKhoan);
@@ -395,7 +400,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "2";
             txtDangNhap.setText(soTaiKhoan);
@@ -405,7 +410,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "3";
             txtDangNhap.setText(soTaiKhoan);
@@ -415,7 +420,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "4";
             txtDangNhap.setText(soTaiKhoan);
@@ -425,7 +430,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "5";
             txtDangNhap.setText(soTaiKhoan);
@@ -435,7 +440,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "6";
             txtDangNhap.setText(soTaiKhoan);
@@ -445,7 +450,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "7";
             txtDangNhap.setText(soTaiKhoan);
@@ -455,7 +460,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "8";
             txtDangNhap.setText(soTaiKhoan);
@@ -465,7 +470,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "9";
             txtDangNhap.setText(soTaiKhoan);
@@ -475,7 +480,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         if(txtDangNhap.getText().length() >= 10){
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }else{
             String soTaiKhoan = txtDangNhap.getText() + "0";
             txtDangNhap.setText(soTaiKhoan);
@@ -492,14 +497,15 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         String tenDangNhap = txtDangNhap.getText();
         frmDangNhapMatKhau frmMatKhau = new frmDangNhapMatKhau();
-        String thongBao = "Vui lòng chọn quyền người dùng";
+        String thongBao = "Please choose your account type first!";
         boolean ketQua = false;
         
+        //If no radio button is selected -> Send out notification to select
         if(!rbtnNguoiDung.isSelected() && !rbtnQuanLy.isSelected()){
             lblThongBao.setText(thongBao);
         }else{
             if(rbtnNguoiDung.isSelected()){
-                thongBao = "Số tài khoản đã nhập không tồn tại!";
+                thongBao = "The entered account number does not exist!";
                 List<NguoiDung> lstNguoiDung = DataProvider.getNguoiDungBus().layDanhSach();
                 for(int i = 0; i < lstNguoiDung.size(); i++){
                     if(tenDangNhap.equals(lstNguoiDung.get(i).getSoTaiKhoan())){
@@ -507,7 +513,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
                     }
                 }
             }else{
-                thongBao = "Tài khoản đã nhập không tồn tại!";
+                thongBao = "The entered account does not exist!";
                 List<QuanLy> lstQuanLy = DataProvider.getQuanLyBus().layDanhSachQuanLy();
                 for(int i = 0; i < lstQuanLy.size(); i++){
                     if(tenDangNhap.equals(lstQuanLy.get(i).getUsername())){
@@ -526,7 +532,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnterActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Cửa sổ đăng nhập - Tài khoản");
+        this.setTitle("Login window - Account");
     }//GEN-LAST:event_formWindowOpened
 
     private void btnXoaTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaTatCaActionPerformed
@@ -538,7 +544,7 @@ public class frmDangNhapUsername extends javax.swing.JFrame {
     private void txtDangNhapKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDangNhapKeyTyped
         if(txtDangNhap.getText().length() >= 10){
             evt.consume();
-            lblThongBao.setText("Đã đạt số ký tự tối đa!");
+            lblThongBao.setText("Maximum characters has been reached!");
         }
     }//GEN-LAST:event_txtDangNhapKeyTyped
 

@@ -106,7 +106,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="0" red="33" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="B&#x1ea1;n c&#xf3; mu&#x1ed1;n l&#x1ea5;y sao k&#xea;?"/>
+            <Property name="text" type="java.lang.String" value="Do you want to print the invoice?"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

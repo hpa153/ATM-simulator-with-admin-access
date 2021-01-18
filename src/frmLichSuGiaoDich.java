@@ -211,9 +211,9 @@ public class frmLichSuGiaoDich extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(stk.isEmpty()){
-            this.setTitle("Lịch sử giao dịch");
+            this.setTitle("Transaction history");
         }else{
-            this.setTitle("Lịch sử giao dịch của tài khoản " + stk);
+            this.setTitle("Transaction historyof account " + stk);
         }
         
         hienThiLichSuGiaoDich();
@@ -223,7 +223,7 @@ public class frmLichSuGiaoDich extends javax.swing.JFrame {
         List<SaoKe> lstGiaoDich = DataProvider.getGiaoDichBus().docGiaoDich(stk);
         
         JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Lưu lịch sử giao dịch");
+        chooser.setDialogTitle("Save transaction history");
         
         boolean ketQua = false;
         
@@ -233,7 +233,7 @@ public class frmLichSuGiaoDich extends javax.swing.JFrame {
         }
         
         if(ketQua){
-            JOptionPane.showMessageDialog(rootPane, "In hóa đơn thành công");
+            JOptionPane.showMessageDialog(rootPane, "Successfully printed invoice");
             this.setVisible(false);
         }
     }//GEN-LAST:event_btnInActionPerformed

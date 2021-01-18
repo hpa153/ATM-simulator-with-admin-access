@@ -63,15 +63,15 @@ public class frmMatKhau extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel1.setText("Nhập mật khẩu cũ:");
+        jLabel1.setText("Current password:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel2.setText("Nhập mật khẩu mới:");
+        jLabel2.setText("New password:");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 0, 102));
-        jLabel3.setText("Xác nhận mật khẩu mới:");
+        jLabel3.setText("Re-enter new password:");
 
         txtMatKhaucu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtMatKhaucu.setForeground(new java.awt.Color(51, 0, 102));
@@ -203,17 +203,17 @@ public class frmMatKhau extends javax.swing.JFrame {
                 if(matKhauMoi.equals(xacNhan)){
                     ketQua = DataProvider.getQuanLyBus().doiMatKhau(taiKhoan, matKhauMoi);
                 }else{
-                    thongBao = "Vui lòng nhập lại mật khẩu mới trùng khớp nhau.";
+                    thongBao = "Please re-enter matching new password.";
                 }
             }else{
-                thongBao = "Mật khẩu gồm 6 ký tự. Vui lòng nhập mật khẩu hợp lệ.";
+                thongBao = "Password includes 6 characters. Please enter valid password.";
             }
         }else{
-            thongBao = "Mật khẩu hiện tại chưa đúng. Vui lòng nhập lại.";
+            thongBao = "Current password is incorrect. Please re-enter.";
         }
 
         if(ketQua){
-            JOptionPane.showMessageDialog(rootPane, "Bạn đã đổi mã mật khẩu thành công");
+            JOptionPane.showMessageDialog(rootPane, "Successfully changed password");
             this.setVisible(false);
         }else{
             lblThongBao.setText(thongBao);
@@ -221,7 +221,7 @@ public class frmMatKhau extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXacNhanActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Đổi mật khẩu");
+        this.setTitle("Password change");
     }//GEN-LAST:event_formWindowOpened
 
     private void txtMatKhaucuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhaucuKeyPressed

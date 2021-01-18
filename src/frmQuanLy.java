@@ -326,7 +326,7 @@ public class frmQuanLy extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setTitle("Trình quản lý");
+        this.setTitle("Administration panel");
         
         QuanLy objQL = DataProvider.getQuanLyBus().layChiTietQuanLy(taiKhoan);
         
@@ -355,7 +355,7 @@ public class frmQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn xóa người dùng này không?", "Chú ý!",
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Are you sure to delete this account?", "Alert!",
                 JOptionPane.WARNING_MESSAGE, JOptionPane.YES_NO_OPTION);
         
         if(ketQua == JOptionPane.YES_OPTION)
@@ -368,7 +368,7 @@ public class frmQuanLy extends javax.swing.JFrame {
             
             if(kq)
             {
-                JOptionPane.showMessageDialog(rootPane, "Người dùng được xóa thành công");
+                JOptionPane.showMessageDialog(rootPane, "Account is successfully deleted");
                 hienThiDanhSachNguoiDung();
             }
         }
@@ -399,7 +399,7 @@ public class frmQuanLy extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnSoDuActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
-        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Bạn có chắc chắn muốn thoát?", "Chú ý!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        int ketQua = JOptionPane.showConfirmDialog(rootPane, "Are you sure to exit?", "Attention!", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         
         if(ketQua == JOptionPane.YES_OPTION)
         {
@@ -435,7 +435,7 @@ public class frmQuanLy extends javax.swing.JFrame {
         
         switch(trangThai){
             case KHONG_CO:{
-                JOptionPane.showMessageDialog(rootPane, "Tài khoản này chưa có giao dịch nào!");
+                JOptionPane.showMessageDialog(rootPane, "This account does not have any transactions!");
                 break;
             }
             case TAI_KHOAN:
